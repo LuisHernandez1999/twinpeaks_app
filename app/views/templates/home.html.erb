@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Peaks - Bem-vindo aos Mistérios</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --twin-peaks-red: #dc2626;
+            --twin-peaks-amber: #f59e0b;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a3a3a3;
+            --border-color: #262626;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://www.twinpeaksblog.com/wp-content/uploads/2019/01/49_VacantPeaks_RedRoom_Part02_FloorMoving06.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: flicker 3s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--twin-peaks-red);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark-bg);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--twin-peaks-red);
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Characters Section */
+        .characters {
+            background-color: var(--card-bg);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: var(--dark-bg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            color: var(--twin-peaks-amber);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Atmosphere Section */
+        .atmosphere-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .bullet {
+            width: 8px;
+            height: 8px;
+            background-color: var(--twin-peaks-red);
+            border-radius: 50%;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background-color: var(--twin-peaks-red);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .btn-secondary {
+            background-color: var(--twin-peaks-amber);
+            color: var(--dark-bg);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d97706;
+        }
+        
+        .btn-outline-light {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: white;
+            color: var(--twin-peaks-red);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--card-bg);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--twin-peaks-red);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--text-primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid,
+            .atmosphere-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="heading-font">Twin Peaks</h1>
+            <p>Bem-vindo aos mistérios da pequena cidade onde nada é o que parece</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Explorar Mistérios</a>
+                <%= link_to "Personagens", new_character_path, class: "btn btn-primary" %>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title heading-font">Uma Série Cult Inesquecível</h2>
+            <p class="section-subtitle">
+                Twin Peaks é uma obra-prima que revolucionou a televisão, misturando mistério, drama e elementos sobrenaturais de forma única.
+            </p>
+            
+            <div class="about-grid">
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Twinpeaksonearmedgiant.jpg" 
+                         alt="Red Room de Twin Peaks" class="about-image">
+                </div>
+                <div class="about-content">
+                    <h3 class="heading-font">O Mistério de Laura Palmer</h3>
+                    <p>
+                        Quando a popular estudante Laura Palmer é encontrada morta, o agente especial Dale Cooper chega à pequena cidade de Twin Peaks para investigar. O que ele descobre vai muito além de um simples assassinato.
+                    </p>
+                    <p>
+                        Criada por David Lynch e Mark Frost, a série explora os segredos obscuros de uma comunidade aparentemente pacífica, revelando um mundo onde o sobrenatural e o cotidiano se entrelaçam de forma perturbadora.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section class="section characters">
+        <div class="container">
+            <h2 class="section-title heading-font">Personagens Inesquecíveis</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://twinpeaksblog.com/wp-content/uploads/2021/03/22_TPB_Prop_RoadhouseReturnHunt_2009CooperThumbsUpLightning.jpg" 
+                         alt="Agente Dale Cooper" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title heading-font">Agente Dale Cooper</h3>
+                        <p class="card-subtitle">FBI Special Agent</p>
+                        <p class="card-text">
+                            O excêntrico agente do FBI que chega a Twin Peaks para investigar o assassinato de Laura Palmer. Conhecido por seu amor por café e torta de cereja.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://twinpeaksblog.com/wp-content/uploads/2025/01/TPB_Prop_LauraHomeUniversityBook_05_DonnaLauraOutsideSchool.jpg" 
+                         alt="Laura Palmer" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title heading-font">Laura Palmer</h3>
+                        <p class="card-subtitle">A Rainha do Baile</p>
+                        <p class="card-text">
+                            A popular estudante cujo assassinato desencadeia os eventos da série. Seus segredos obscuros são gradualmente revelados ao longo da investigação.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://welcometotwinpeaks.com/wp-content/uploads/harry-truman-michael-ontkean-jacket-785x555.jpg" 
+                         alt="Sheriff Truman" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title heading-font">Sheriff Truman</h3>
+                        <p class="card-subtitle">Xerife Local</p>
+                        <p class="card-text">
+                            O dedicado xerife de Twin Peaks que se torna parceiro e amigo do Agente Cooper na investigação dos mistérios da cidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atmosphere Section -->
+    <section class="section">
+        <div class="container">
+            <div class="atmosphere-grid">
+                <div>
+                    <h2 class="heading-font" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Atmosfera Única</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                        A série é famosa por sua atmosfera onírica e perturbadora, criada através da direção visionária de David Lynch e da trilha sonora hipnotizante de Angelo Badalamenti.
+                    </p>
+                    <ul class="features-list">
+                        <li><span class="bullet"></span>Direção cinematográfica inovadora</li>
+                        <li><span class="bullet"></span>Trilha sonora icônica</li>
+                        <li><span class="bullet"></span>Elementos sobrenaturais únicos</li>
+                        <li><span class="bullet"></span>Personagens memoráveis</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://i0.wp.com/www.thewrap.com/wp-content/uploads/2017/06/twin-peaks-revival-bang-bang-bar-roadhouse-richard-horne-eamon-farren.jpg?fit=618%2C412&quality=89&ssl=1" 
+                         alt="Double R Diner" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <h2 class="section-title heading-font">Entre no Mundo de Twin Peaks</h2>
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem;">
+                Junte-se à comunidade de fãs e descubra todos os segredos desta série revolucionária
+            </p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-secondary">Cadastrar-se</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+</body>
+</html>

@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 201615
+  host: localhost
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: twin_peaks_dev
+
+test:
+  <<: *default
+  database: twin_peaks_test
+
+production:
+  <<: *default
+  database: twin_peaks_prod
